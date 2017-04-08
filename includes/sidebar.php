@@ -16,7 +16,7 @@
 
     <!-- Blog Categories Well -->
     <div class="well">
-        <h4>Blog Categories</h4>
+        <h4>Categorias</h4>
         <div class="row">
             <div class="col-lg-12">
                 <ul class="list-unstyled">
