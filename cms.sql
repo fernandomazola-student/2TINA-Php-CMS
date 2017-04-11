@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: 08-Abr-2017 às 01:59
+-- Generation Time: 11-Abr-2017 às 02:31
 -- Versão do servidor: 10.1.19-MariaDB
 -- PHP Version: 7.0.13
 
@@ -30,14 +30,6 @@ CREATE TABLE `categorias` (
   `cat_id` int(3) NOT NULL,
   `cat_nome` varchar(200) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
---
--- Extraindo dados da tabela `categorias`
---
-
-INSERT INTO `categorias` (`cat_id`, `cat_nome`) VALUES
-(1, 'php'),
-(2, 'mobile');
 
 -- --------------------------------------------------------
 
@@ -88,7 +80,7 @@ ALTER TABLE `posts`
 -- AUTO_INCREMENT for table `categorias`
 --
 ALTER TABLE `categorias`
-  MODIFY `cat_id` int(3) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `cat_id` int(3) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=56;
 --
 -- AUTO_INCREMENT for table `posts`
 --

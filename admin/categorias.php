@@ -1,7 +1,9 @@
+
 <?php include '../includes/db.php'; ?>
 <?php include '../includes/functions.php'; ?>
 <?php include 'includes/header.php';
  ?>
+
 
 
 <div id="wrapper">
@@ -15,6 +17,7 @@
             <!-- Page Heading -->
             <div class="row">
                 <div class="col-lg-12">
+
                     <h1 class="page-header">
                         Bem-vindo
                         <small>Fernando</small>
@@ -27,15 +30,34 @@
                         </div>
 
                         <div class="form-group">
-                          <input type="submit" class="form-control" name="enviar" value="Adicionar">
+                          <input type="submit" class="form-control" name="cat_cadastrar" value="Adicionar">
                         </div>
+
+                        <?php
+                        if(isset($_POST['cat_cadastrar'])){
+                          $nome = $_POST['cat_nome'];
+                          if($nome == "" || empty($nome)){
+                            echo '<p class="alert alert-danger">Campo vázio<p>';
+                          }else{
+                            setCategorias();
+                          }
+                        }
+                        if(isset($_GET['delete'])){
+                          delCategorias();
+                          echo $_SESSION['msg'];
+                        }
+                         ?>
+
                       </form>
+
 
                     </div>
 
+
+
                     <div class="col-sm-6">
                       <div class="table-responsive">
-                        <table class="table">
+                        <table class="table table-bordered">
                           <thead>
                             <tr>
                               <th>ID</th>
@@ -49,13 +71,16 @@
                               <tr>
                                 <td><?php echo $row['cat_id']; ?></td>
                                 <td><?php echo $row['cat_nome'];  ?></td>
+                                <td><a href='categorias.php?delete=<?php echo $row['cat_id']?>'>Excluir</a></td>
                               </tr>
+                              <!-- <center><input type="submit" class="btn btn-danger" name="excluir" value="Excluir"/></center> -->
                             </tbody>
                           <?php } ?>
 
                         </table>
                       </div>
                     </div>
+
 
                 </div>
             </div>
