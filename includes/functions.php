@@ -29,4 +29,11 @@ function delCategorias(){
     header("Location:categorias.php");
   }
 }
+
+function altCategorias(){
+  global $connection;
+  $cat_id = $_GET['alterar'];
+  $query = "SELECT * from categorias where cat_id = $cat_id";
+  $select_categorias = mysqli_query($connection, $query);
+}
 ?>

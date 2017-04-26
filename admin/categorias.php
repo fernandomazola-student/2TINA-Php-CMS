@@ -1,8 +1,10 @@
 
 <?php include '../includes/db.php'; ?>
-<?php include '../includes/functions.php'; ?>
+<?php include '../includes/functions.php';
+?>
 <?php include 'includes/header.php';
  ?>
+
 
 
 
@@ -50,6 +52,38 @@
 
                       </form>
 
+                      <form class="" action="categorias.php" method="get">
+                        <div class="form-group">
+                          <label for="cat_nome">Alterar Categoria</label>
+                          <?php
+                          if (isset($_GET['alterar'])){
+                            altCategorias();
+                          while($row = mysqli_fetch_assoc($select_categorias)){
+                              $cat_id = $row['cat_id'];
+                              $cat_nome = $row['cat_nome'];?>
+
+                              <input type="text" class="form-control" name="cat_nome" value='<?php echo $cat_nome ?>'>
+                              <?php
+                            }
+                          }
+                          ?>
+
+                        </div>
+
+                        <div class="form-group">
+                          <input type="submit" class="form-control" name="cat_alterar" value="Alterar">
+                        </div>
+
+
+
+
+
+
+
+
+
+                      </form>
+
 
                     </div>
 
@@ -64,6 +98,7 @@
                               <th>Nome da Categoria</th>
                             </tr>
                           </thead>
+
                           <?php
                           $resultado_do_select_todas_categorias = getCategorias();
                           while ($row = mysqli_fetch_assoc($resultado_do_select_todas_categorias)) { ?>
@@ -72,6 +107,7 @@
                                 <td><?php echo $row['cat_id']; ?></td>
                                 <td><?php echo $row['cat_nome'];  ?></td>
                                 <td><a href='categorias.php?delete=<?php echo $row['cat_id']?>'>Excluir</a></td>
+                                <td><a href='categorias.php?alterar=<?php echo $row['cat_id']?>'>Alterar</a></td>
                               </tr>
                               <!-- <center><input type="submit" class="btn btn-danger" name="excluir" value="Excluir"/></center> -->
                             </tbody>
