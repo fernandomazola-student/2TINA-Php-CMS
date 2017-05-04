@@ -25,6 +25,7 @@
                         <small>Fernando</small>
                     </h1>
                     <div class="col-sm-6">
+
                       <form class="" action="categorias.php" method="post">
                         <div class="form-group">
                           <label for="cat_nome">Adicionar Categoria</label>
@@ -55,35 +56,17 @@
                       <form class="" action="categorias.php" method="get">
                         <div class="form-group">
                           <label for="cat_nome">Alterar Categoria</label>
-                          <?php
-                          if (isset($_GET['alterar'])){
-                            altCategorias();
-                          while($row = mysqli_fetch_assoc($select_categorias)){
-                              $cat_id = $row['cat_id'];
-                              $cat_nome = $row['cat_nome'];?>
-
-                              <input type="text" class="form-control" name="cat_nome" value='<?php echo $cat_nome ?>'>
-                              <?php
-                            }
-                          }
-                          ?>
-
                         </div>
-
                         <div class="form-group">
                           <input type="submit" class="form-control" name="cat_alterar" value="Alterar">
                         </div>
-
-
-
-
-
-
-
-
-
                       </form>
-
+                      <?php
+                        if(isset($_GET['alterar'])){
+                          $cat_id = $_GET['alterar'];
+                          altCategorias();
+                        }
+                       ?>
 
                     </div>
 

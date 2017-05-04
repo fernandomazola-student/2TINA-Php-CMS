@@ -31,9 +31,17 @@ function delCategorias(){
 }
 
 function altCategorias(){
-  global $connection;
-  $cat_id = $_GET['alterar'];
-  $query = "SELECT * from categorias where cat_id = $cat_id";
-  $select_categorias = mysqli_query($connection, $query);
+      global $connection;
+      global $cat_id;
+      $query = "SELECT * from categorias WHERE cat_id = {$cat_id}";
+      $select_categorias = mysqli_query($connection, $query);
+      while($row = mysqli_fetch_assoc($select_categorias)){
+        $cat_id = $row['cat_id'];
+        $cat_nome = $row['cat_nome'];
+        ?>
+
+        <input value="<?php if(isset($cat_nome)) {echo $cat_nome;}?>" type="text" class="form-control" name="cat_nome">
+
+      <?php  }
 }
 ?>
