@@ -53,20 +53,14 @@
 
                       </form>
 
-                      <form class="" action="categorias.php" method="POST">
-                        <div class="form-group">
-                          <label for="cat_nome">Alterar Categoria</label>
+
                           <?php
                             if(isset($_GET['alterar'])){
                               $cat_id = $_GET['alterar'];
                               altCategorias();
                             }
                            ?>
-                        </div>
-                        <div class="form-group">
-                          <input type="submit" class="form-control" name="cat_alterar" value="Alterar">
-                        </div>
-                      </form>
+
 
                       <?php
                         uptCategoria();

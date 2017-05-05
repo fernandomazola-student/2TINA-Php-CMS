@@ -34,6 +34,12 @@ function altCategorias(){
       global $connection;
       global $cat_id;
 
+      echo '
+      <form class="" action="categorias.php" method="POST">
+        <div class="form-group">
+          <label for="cat_nome">Alterar Categoria</label>
+
+      ';
 
       $query = "SELECT * from categorias WHERE cat_id = $cat_id";
       $select_categorias = mysqli_query($connection, $query);
@@ -44,11 +50,16 @@ function altCategorias(){
         <input value="<?php if(isset($cat_nome)) {echo $cat_nome;}?>" type="text" class="form-control" name="cat_nome" id="names">
         <input value="<?php if(isset($cat_id)) {echo $cat_id;}?>" type="hidden" class="form-control" name="cat_id" id="names">
       <?php  }
+      echo '</div>
+      <div class="form-group">
+        <input type="submit" class="form-control" name="cat_alterar" value="Alterar">
+      </div>
+    </form>';
 
   }
   function uptCategoria(){
     global $connection;
-    
+
 
     if (isset($_POST['cat_alterar'])) {
       $nome = $_POST['cat_nome'];
