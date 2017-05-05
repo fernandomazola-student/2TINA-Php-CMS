@@ -53,7 +53,7 @@
 
                       </form>
 
-                      <form class="" action="categorias.php" method="post">
+                      <form class="" action="categorias.php" method="POST">
                         <div class="form-group">
                           <label for="cat_nome">Alterar Categoria</label>
                           <?php
@@ -68,7 +68,9 @@
                         </div>
                       </form>
 
-
+                      <?php
+                        uptCategoria();
+                       ?>
                     </div>
 
 

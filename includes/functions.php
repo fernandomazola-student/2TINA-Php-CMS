@@ -34,28 +34,34 @@ function altCategorias(){
       global $connection;
       global $cat_id;
 
-      $query = "SELECT * from categorias WHERE cat_id = {$cat_id}";
+
+      $query = "SELECT * from categorias WHERE cat_id = $cat_id";
       $select_categorias = mysqli_query($connection, $query);
       while($row = mysqli_fetch_assoc($select_categorias)){
         $cat_id = $row['cat_id'];
         $cat_nome = $row['cat_nome'];
         ?>
-        <input value="<?php if(isset($cat_nome)) {echo $cat_nome;}?>" type="text" class="form-control" name="cat_nome">
+        <input value="<?php if(isset($cat_nome)) {echo $cat_nome;}?>" type="text" class="form-control" name="cat_nome" id="names">
+        <input value="<?php if(isset($cat_id)) {echo $cat_id;}?>" type="hidden" class="form-control" name="cat_id" id="names">
       <?php  }
 
-
-      if (isset($_POST['cat_alterar'])) {
-        $nome = $_POST['cat_nome'];
-        $query = "UPDATE categorias SET cat_nome = '$nome' cat_id = {$cat_id}";
-        $resultado = mysqli_query($connection, $query);
-        if(!$resultado){
-          die("Shiii, falhou na hora de atualizar");
-        }else{
-          echo "Dados atualizados com sucesso!!";
-        }
-      }
   }
+  function uptCategoria(){
+    global $connection;
+    
 
+    if (isset($_POST['cat_alterar'])) {
+      $nome = $_POST['cat_nome'];
+      $id = $_POST['cat_id'];
+      $query = "UPDATE categorias SET cat_nome = '$nome' WHERE cat_id = $id";
+      $resultado = mysqli_query($connection, $query);
+      if(!$resultado){
+        die("Shiii, falhou na hora de atualizar");
+      }else{
+        echo "Dados atualizados com sucesso!!";
+      }
+    }
+  }
 
 
 
