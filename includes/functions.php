@@ -33,19 +33,7 @@ function delCategorias(){
 function altCategorias(){
       global $connection;
       global $cat_id;
-      global $um;
 
-      if($um = 2){
-          $edita_cat_nome = $_POST['cat_nome'];
-          $query = "UPDATE categorias SET cat_nome = '$edita_cat_nome'
-          WHERE cat_id = {$cat_id}";
-          $editaCategoria = mysqli_query($connection, $query);
-          if(!$editaCategoria){
-            die("deu ruim" . mysqli_error($connection));
-          }
-        }
-
-    if($um = 1){
       $query = "SELECT * from categorias WHERE cat_id = {$cat_id}";
       $select_categorias = mysqli_query($connection, $query);
       while($row = mysqli_fetch_assoc($select_categorias)){
@@ -54,6 +42,21 @@ function altCategorias(){
         ?>
         <input value="<?php if(isset($cat_nome)) {echo $cat_nome;}?>" type="text" class="form-control" name="cat_nome">
       <?php  }
-    }
-}
+
+
+      if (isset($_POST['cat_alterar'])) {
+        $nome = $_POST['cat_nome'];
+        $query = "UPDATE categorias SET cat_nome = '$nome' cat_id = {$cat_id}";
+        $resultado = mysqli_query($connection, $query);
+        if(!$resultado){
+          die("Shiii, falhou na hora de atualizar");
+        }else{
+          echo "Dados atualizados com sucesso!!";
+        }
+      }
+  }
+
+
+
+
 ?>

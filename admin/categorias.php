@@ -56,24 +56,18 @@
                       <form class="" action="categorias.php" method="post">
                         <div class="form-group">
                           <label for="cat_nome">Alterar Categoria</label>
+                          <?php
+                            if(isset($_GET['alterar'])){
+                              $cat_id = $_GET['alterar'];
+                              altCategorias();
+                            }
+                           ?>
                         </div>
                         <div class="form-group">
                           <input type="submit" class="form-control" name="cat_alterar" value="Alterar">
                         </div>
                       </form>
-                      <?php
-                        if(isset($_GET['alterar'])){
-                          $cat_id = $_GET['alterar'];
-                          $v = 1;
-                          $um = $v;
-                          altCategorias();
-                        }
-                        if (isset($_POST['cat_alterar'])) {
-                          $v = 2;
-                          $um = $v;
-                          altCategorias();
-                        }
-                       ?>
+
 
                     </div>
 
